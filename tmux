@@ -2,10 +2,8 @@
 # general #
 ###########
 # Replace C-b prefix with Alt+Space (so it won't clash with vim)
-
 unbind C-b
 set-option -g prefix M-Space
-set-window-option -g mode-keys vi
 
 set-option -g default-shell /usr/bin/bash
 # to prevent ssh from renaming window name
@@ -13,10 +11,7 @@ set-option -g allow-rename off
 
 # enable mouse
 setw -g mouse on
-
-# Fix OSX pasteboard issue and also launching app in OSX issue (no longer needed for tmux 2.6+)
-# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-# set-option -g default-command "reattach-to-user-namespace -l fish"
+set-window-option -g mode-keys vi
 
 # address vim mode switching delay (http://superuser.com/a/252717/65504)
 set -s escape-time 0
@@ -65,13 +60,9 @@ bind -n S-Down select-pane -D
 # bind -n S-M-Down select-pane -D
 
 # Remap pane/window splitting to use current pane path
-bind % split-window -h -c "#{pane_current_path}"
-bind '"' split-window -c "#{pane_current_path}"
-bind c new-window -c "#{pane_current_path}"
-
-# Additional sane pane splitting shortcut
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 
 # M-Enter to zoom pane
 bind -n M-Enter resize-pane -Z
